@@ -1,4 +1,4 @@
-caseit
+@trenskow/caseit
 ----
 
 A small library for changing the case of a string.
