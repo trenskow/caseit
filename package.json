@@ -1,6 +1,6 @@
 {
   "name": "@trenskow/caseit",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Small library for converting between different casing.",
   "main": "index.js",
   "scripts": {
