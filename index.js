@@ -8,7 +8,8 @@ module.exports = exports = function(input, type = 'camel') {
 		'snake': '_',
 		'domain': '.',
 		'kebab': '-',
-		'title': ' '
+		'title': ' ',
+		'http': '-'
 	};
 
 	if (Object.keys(separators).indexOf(type) == -1) {
@@ -23,6 +24,8 @@ module.exports = exports = function(input, type = 'camel') {
 				if (idx == 0) return key.toLowerCase();
 				// falls through
 			case 'title':
+				// falls through
+			case 'http':
 				// falls through
 			case 'pascal':
 				return key.charAt(0).toUpperCase() + key.substring(1).toLowerCase();

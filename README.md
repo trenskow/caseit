@@ -17,6 +17,7 @@ You can convert from any format to any other format. Supported formats are.
  * `domain` - domain.case
  * `kebab` - kebab-case
  * `title` - Title Case
+ * `http` - Http-Case
 
 > Default format (if omitted) is `camel`.
 
