@@ -13,7 +13,7 @@ module.exports = exports = function(input, type = 'camel') {
 	};
 
 	if (Object.keys(separators).indexOf(type) == -1) {
-		throw new TypeError('Type must either be `camel`, `pascal`, `snake`, `domain`, `kebab`, `title`.');
+		throw new TypeError('Type must either be `camel`, `pascal`, `snake`, `domain`, `kebab`, `title`, `http`.');
 	}
 
 	const parts = input.split(/(?=[A-Z])|_|-| |\./)
@@ -22,17 +22,17 @@ module.exports = exports = function(input, type = 'camel') {
 			switch (type) {
 			case 'camel':
 				if (idx == 0) return key.toLowerCase();
-				// falls through
+				// fallthrough
 			case 'title':
-				// falls through
+				// fallthrough
 			case 'http':
-				// falls through
+				// fallthrough
 			case 'pascal':
 				return key.charAt(0).toUpperCase() + key.substring(1).toLowerCase();
 			case 'domain':
-				// falls through
+				// fallthrough
 			case 'kebab':
-				// falls through
+				// fallthrough
 			case 'snake':
 				return key.toLowerCase();
 			}
