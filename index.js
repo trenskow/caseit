@@ -1,22 +1,24 @@
 'use strict';
 
+const separators = {
+	'camel': '',
+	'pascal': '',
+	'snake': '_',
+	'domain': '.',
+	'kebab': '-',
+	'title': ' ',
+	'http': '-'
+};
+
+const supported = Object.keys(separators);
+
 module.exports = exports = function(input, type = 'camel') {
 
-	const separators = {
-		'camel': '',
-		'pascal': '',
-		'snake': '_',
-		'domain': '.',
-		'kebab': '-',
-		'title': ' ',
-		'http': '-'
-	};
-
-	if (Object.keys(separators).indexOf(type) == -1) {
+	if (!supported.includes(type)) {
 		throw new TypeError('Type must either be `camel`, `pascal`, `snake`, `domain`, `kebab`, `title`, `http`.');
 	}
 
-	const parts = input.split(/(?=[A-Z])|_|-| |\./)
+	const words = exports.words(input)
 		.filter((key) => key.length)
 		.map((key, idx) => {
 			switch (type) {
@@ -38,6 +40,16 @@ module.exports = exports = function(input, type = 'camel') {
 			}
 		});
 
-	return parts.join(separators[type]);
-					
+	return words.join(separators[type]);
+
+};
+
+exports.words = function(input) {
+	return input.split(/(?=[A-Z])|_|-| |\./)
+		.map((word) => word.toLowerCase());
+};
+
+exports.detect = function(input) {
+	return supported
+		.filter((type) => exports(input, type) === input);
 };
