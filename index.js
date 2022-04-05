@@ -10,12 +10,12 @@ const separators = {
 	'http': '-'
 };
 
-const supported = Object.keys(separators);
+const supported = Object.keys(separators).sort();
 
 module.exports = exports = function(input, type = 'camel') {
 
 	if (!supported.includes(type)) {
-		throw new TypeError('Type must either be `camel`, `pascal`, `snake`, `domain`, `kebab`, `title`, `http`.');
+		throw new TypeError(`Type must either be ${supported.slice(0, -1).join(', ')} or ${supported.slice(-1)[0]}.`);
 	}
 
 	const words = exports.words(input)
@@ -53,3 +53,5 @@ exports.detect = function(input) {
 	return supported
 		.filter((type) => exports(input, type) === input);
 };
+
+exports.supported = supported;
