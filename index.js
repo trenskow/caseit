@@ -7,7 +7,9 @@ const separators = {
 	'domain': '.',
 	'kebab': '-',
 	'title': ' ',
-	'http': '-'
+	'http': '-',
+	'lower': '',
+	'upper': ''
 };
 
 const supported = Object.keys(separators).sort();
@@ -35,8 +37,12 @@ module.exports = exports = function(input, type = 'camel') {
 				// fallthrough
 			case 'kebab':
 				// fallthrough
+			case 'lower':
+				// fallthrough
 			case 'snake':
 				return key.toLowerCase();
+			case 'upper':
+				return key.toUpperCase();
 			}
 		});
 
