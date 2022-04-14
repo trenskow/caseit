@@ -7,9 +7,7 @@ const separators = {
 	'domain': '.',
 	'kebab': '-',
 	'title': ' ',
-	'http': '-',
-	'lower': '',
-	'upper': ''
+	'http': '-'
 };
 
 const supported = Object.keys(separators).sort();
@@ -21,7 +19,6 @@ module.exports = exports = function(input, type = 'camel') {
 	}
 
 	const words = exports.words(input)
-		.filter((key) => key.length)
 		.map((key, idx) => {
 			switch (type) {
 			case 'camel':
@@ -37,12 +34,8 @@ module.exports = exports = function(input, type = 'camel') {
 				// fallthrough
 			case 'kebab':
 				// fallthrough
-			case 'lower':
-				// fallthrough
 			case 'snake':
 				return key.toLowerCase();
-			case 'upper':
-				return key.toUpperCase();
 			}
 		});
 
@@ -52,6 +45,7 @@ module.exports = exports = function(input, type = 'camel') {
 
 exports.words = function(input) {
 	return input.split(/(?=[A-Z])|_|-| |\./)
+		.filter((key) => key.length)
 		.map((word) => word.toLowerCase());
 };
 
