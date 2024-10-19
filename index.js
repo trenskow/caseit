@@ -55,3 +55,4 @@ caseit.detect = function(input) {
 caseit.supported = supported;
 
 export default caseit;
+export { supported };
