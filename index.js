@@ -16,7 +16,7 @@ const caseit = function(input, type = 'camel') {
 		throw new TypeError(`Type must either be ${supported.slice(0, -1).join(', ')} or ${supported.slice(-1)[0]}.`);
 	}
 
-	const words = exports.words(input)
+	const words = caseit.words(input)
 		.map((key, idx) => {
 			switch (type) {
 			case 'camel':
@@ -49,7 +49,7 @@ caseit.words = function(input) {
 
 caseit.detect = function(input) {
 	return supported
-		.filter((type) => exports(input, type) === input);
+		.filter((type) => caseit(input, type) === input);
 };
 
 caseit.supported = supported;
