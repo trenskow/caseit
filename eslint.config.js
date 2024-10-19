@@ -1,8 +1,8 @@
-import globals from "globals";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
-import js from "@eslint/js";
-import { FlatCompat } from "@eslint/eslintrc";
+import globals from 'globals';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import js from '@eslint/js';
+import { FlatCompat } from '@eslint/eslintrc';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -12,34 +12,34 @@ const compat = new FlatCompat({
 	allConfig: js.configs.all
 });
 
-export default [...compat.extends("eslint:recommended"), {
+export default [...compat.extends('eslint:recommended'), {
 	languageOptions: {
 		globals: {
 			...globals.node,
 		},
 
-		ecmaVersion: 2017,
-		sourceType: "module",
+		ecmaVersion: 'latest',
+		sourceType: 'module',
 	},
 
 	rules: {
-		indent: ["error", "tab"],
-		"linebreak-style": ["error", "unix"],
-		quotes: ["error", "single"],
-		semi: ["error", "always"],
+		indent: ['error', 'tab'],
+		'linebreak-style': ['error', 'unix'],
+		quotes: ['error', 'single'],
+		semi: ['error', 'always'],
 
-		"no-console": ["error", {
-			allow: ["warn", "error", "info"],
+		'no-console': ['error', {
+			allow: ['warn', 'error', 'info'],
 		}],
 
-		"no-unused-vars": ["error", {
-			argsIgnorePattern: "^_",
+		'no-unused-vars': ['error', {
+			argsIgnorePattern: '^_',
 		}],
 
-		"no-empty": ["error", {
+		'no-empty': ['error', {
 			allowEmptyCatch: true,
 		}],
 
-		"require-atomic-updates": "off",
+		'require-atomic-updates': 'off',
 	},
 }];
