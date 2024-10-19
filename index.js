@@ -1,5 +1,3 @@
-'use strict';
-
 const separators = {
 	'camel': '',
 	'pascal': '',
@@ -12,7 +10,7 @@ const separators = {
 
 const supported = Object.keys(separators).sort();
 
-module.exports = exports = function(input, type = 'camel') {
+const caseit = function(input, type = 'camel') {
 
 	if (!supported.includes(type)) {
 		throw new TypeError(`Type must either be ${supported.slice(0, -1).join(', ')} or ${supported.slice(-1)[0]}.`);
@@ -43,15 +41,17 @@ module.exports = exports = function(input, type = 'camel') {
 
 };
 
-exports.words = function(input) {
+caseit.words = function(input) {
 	return input.split(/(?=[A-Z])|_|-| |\./)
 		.filter((key) => key.length)
 		.map((word) => word.toLowerCase());
 };
 
-exports.detect = function(input) {
+caseit.detect = function(input) {
 	return supported
 		.filter((type) => exports(input, type) === input);
 };
 
-exports.supported = supported;
+caseit.supported = supported;
+
+export default caseit;
