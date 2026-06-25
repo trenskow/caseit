@@ -1,3 +1,11 @@
+//
+// index.js
+// @trenskow/caseit
+//
+// Created by Kristian Trenskow on 2020/01/16
+// For license see LICENSE.
+//
+
 const separators = {
 	'camel': '',
 	'pascal': '',
